@@ -34,7 +34,7 @@ describe "Create constituency" do
   DatabaseCleaner.clean
   it "creates a new constituency" do
     post '/constituencies', name: "Bath", population: 1000_000
-    # binding.pry 
+    # post '/constituencies/bath/4000'  
     assert_match /Bath/, last_response.body
   end
 end

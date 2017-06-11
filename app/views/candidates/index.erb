@@ -1,0 +1,27 @@
+<h1><%= "Candidate List" %></h1>
+
+<ul>
+  <% @candidates.each do |candidate| %>
+    <li><%= candidate.first_name %> <%= candidate.last_name %></li>
+  <% end %>
+</ul>
+<h2><%= label_tag "Enter new candidate" %></h2>
+<% form_tag '/candidates', :method => 'post' do %>
+    <p>
+      <%= label_tag "First name" %>
+      <%= text_field_tag :first_name, :value => params[:first_name] %>
+    </p>
+    <p>
+      <%= label_tag "Last name" %>
+      <%= text_field_tag :last_name, :value => params[:last_name] %>
+    </p>
+    <p>
+      <%= label_tag "Party ID" %>
+      <%= number_field_tag :party_id, :value => params[:party_id] %>
+    </p>
+    <p>
+      <%= label_tag "Constituency ID" %>
+      <%= number_field_tag :constituency_id, :value => params[:constituency_id] %>
+    </p>
+    <%= submit_tag "Submit" %>
+<% end %>

@@ -1,7 +1,23 @@
-<h1>Constituency List</h1>
+<h1><%= "Constituency List" %></h1>
 
 <ul>
   <% @constituencies.each do |constituency| %>
     <li><%= constituency.name %></li>
   <% end %>
 </ul>
+<h2><%= label_tag "Enter new constituency" %></h2>
+<% form_tag '/constituencies', :method => 'post' do %>
+    <p>
+      <%= label_tag :name %>
+      <%= text_field_tag :name, :value => params[:name] %>
+    </p>
+    <p>
+      <%= label_tag :population %>
+      <%= text_field_tag :population, :value => params[:population] %>
+    </p>
+    <p>
+      <%= label_tag "Party ID" %>
+      <%= number_field_tag :party_id, :value => params[:party_id] %>
+    </p>
+    <%= submit_tag "Submit" %>
+<% end %>

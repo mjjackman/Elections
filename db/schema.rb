@@ -10,11 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609101306) do
+ActiveRecord::Schema.define(version: 20170610182146) do
+
+  create_table "candidates", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "party_id"
+    t.string "constituency_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "constituencies", force: :cascade do |t|
     t.string "name"
     t.integer "population"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "party_id"
+  end
+
+  create_table "parties", force: :cascade do |t|
+    t.string "name"
+    t.string "leader"
+    t.string "colour"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

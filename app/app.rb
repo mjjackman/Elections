@@ -5,6 +5,10 @@ module Elections
     register Padrino::Helpers
     enable :sessions
 
+    get '/' do
+      render 'home'
+    end
+
     ##
     # Caching support.
     #

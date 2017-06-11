@@ -1,0 +1,23 @@
+<h1><%= "Party List" %></h1>
+
+<ul>
+  <% @parties.each do |party| %>
+    <li><%= party.name %></li>
+  <% end %>
+</ul>
+<h2><%= label_tag "Enter new party" %></h2>
+<% form_tag '/parties', :method => 'post' do %>
+    <p>
+      <%= label_tag :name %>
+      <%= text_field_tag :name, :value => params[:name] %>
+    </p>
+    <p>
+      <%= label_tag :leader %>
+      <%= text_field_tag :leader, :value => params[:leader] %>
+    </p>
+    <p>
+      <%= label_tag "Party colour" %>
+      <%= text_field_tag :colour, :value => params[:colour] %>
+    </p>
+    <%= submit_tag "Submit" %>
+<% end %>

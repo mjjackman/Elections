@@ -1,28 +1,25 @@
 
 Elections::App.controllers :constituencies do
-
-  # get "/constituencies" do
-  #   "Hello World"
-  # end
   
-
-  get "/" do
+  get :index do
     @constituencies = Constituency.all
     render 'index'
   end
 
-  get "/:id" do
-    @constituencies = Constituency.find(params[:id])
+  post :index do
+    new_con = Constituency.create!(name: params[:name],
+                                   population: params[:population],
+                                   party_id: params[:party_id])
+    @constituencies = Constituency.find_by_id(new_con.id)
     render 'show'
   end
 
-  post '/' do
-    @constituencies = Constituency.new(name: params[:name], population: params[:population])
+  get :index, :with => :id do
+     @constituencies = Constituency.find(params[:id])
     render 'show'
   end
 
-  
-  
+
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'
   #   render 'index'
