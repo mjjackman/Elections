@@ -1,4 +1,19 @@
-<h1>Candidate</h1>
 
-    <p><%= @candidates.first_name %> : <%= @candidates.last_name %> : 
-    <% @candidates.party_id %> : <% @candidates.constituency_id %></p>
+
+<h1>Candidate</h1>
+  <table>
+      <tr>
+        <th>First Name | </th>
+        <th> Last Name | </th>
+        <th> Constituency | </th>
+        <th> Total Votes Received</th>
+      </tr>
+      <tr>
+        <td><%= @candidate.first_name %></td>
+        <td><%= @candidate.last_name %></td> 
+        <td><%= @candidate.constituency.name %></td>
+        <td><%= @candidate.total_votes %></td>
+      </tr>
+  </table>
+
+

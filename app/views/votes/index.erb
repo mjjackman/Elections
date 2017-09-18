@@ -1,0 +1,19 @@
+
+
+<h2><%= label_tag "Enter the votes" %></h2>
+<% form_tag url_for(:votes, :index), :method => 'post' do %>
+<ul>
+<% @candidates.each do |candidate| %>
+  <li>
+    <p>
+      <%= candidate.first_name %>
+      <%= candidate.last_name %>
+      <%= hidden_field_tag :candidate_id, value: candidate.id %>
+      <%= label_tag :votes %>
+      <%= text_field_tag :votes, :value => params[:votes] %>
+    </p>
+  </li>
+  <% end %>
+    
+    <%= submit_tag "Submit" %>
+<% end %>

@@ -1,0 +1,10 @@
+<p><%= link_to 'HOME', '/' %></p>
+
+<% form_tag url_for(:logout), method: 'post' do %>
+  <%= hidden_field_tag :_method, value: 'delete' %>
+  <%= submit_tag 'Logout' %>
+<% end %>
+
+<%= yield %>
+
+<footer>Copyright 2017</footer>

@@ -1,3 +1,5 @@
+
+
 <h1><%= "Constituency List" %></h1>
 
 <ul>
@@ -6,7 +8,7 @@
   <% end %>
 </ul>
 <h2><%= label_tag "Enter new constituency" %></h2>
-<% form_tag '/constituencies', :method => 'post' do %>
+<% form_tag url_for(:constituencies, :index), :method => 'post' do %>
     <p>
       <%= label_tag :name %>
       <%= text_field_tag :name, :value => params[:name] %>

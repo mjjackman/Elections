@@ -1,5 +1,8 @@
-<h1>Welcome everyone to this amazing page</h1>
 
-<p><%= link_to 'Candidates', '/candidates' %></p>
-<p><%= link_to 'Parties', '/parties' %></p>
-<p><%= link_to 'Constituencies', '/constituencies' %></p>
+<h1>Election Home Page</h1>
+
+<p><%= link_to 'Candidates', url_for(:candidates, :index) %></p>
+<p><%= link_to 'Parties', url_for(:parties, :index) %></p>
+<p><%= link_to 'Constituencies', url_for(:constituencies, :index) %></p>
+<p><%= link_to 'Enter Total votes', url_for(:votes, :index) %></p>
+

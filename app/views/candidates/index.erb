@@ -1,27 +1,33 @@
+
+
 <h1><%= "Candidate List" %></h1>
 
 <ul>
   <% @candidates.each do |candidate| %>
-    <li><%= candidate.first_name %> <%= candidate.last_name %></li>
+    <li><%= link_to "#{candidate.first_name} #{candidate.last_name}", "/candidates/#{candidate.id}" %> </li>
   <% end %>
 </ul>
 <h2><%= label_tag "Enter new candidate" %></h2>
-<% form_tag '/candidates', :method => 'post' do %>
+<% form_for @candidate, url_for(:candidates, :index), :method => 'post' do |f| %>
     <p>
-      <%= label_tag "First name" %>
-      <%= text_field_tag :first_name, :value => params[:first_name] %>
+      <%= f.label "First name" %>
+      <%= f.text_field :first_name %>
     </p>
     <p>
-      <%= label_tag "Last name" %>
-      <%= text_field_tag :last_name, :value => params[:last_name] %>
+      <%= f.label "Last name" %>
+      <%= f.text_field :last_name %>
     </p>
     <p>
-      <%= label_tag "Party ID" %>
-      <%= number_field_tag :party_id, :value => params[:party_id] %>
+      <%= f.label "Party ID" %>
+      <%= f.select(:party_id, collection: @parties, :fields => [:name, :id]) %>
     </p>
     <p>
-      <%= label_tag "Constituency ID" %>
-      <%= number_field_tag :constituency_id, :value => params[:constituency_id] %>
+      <%= f.label "Constituency ID" %>
+      <%= f.select(:constituency_id, collection: @constituencies, :fields => [:name, :id]) %>
     </p>
-    <%= submit_tag "Submit" %>
+    <p>
+      <%= f.label "Total Votes" %>
+      <%= f.number_field :total_votes %>
+    </p>
+    <%= f.submit "Submit" %>
 <% end %>

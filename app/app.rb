@@ -5,8 +5,32 @@ module Elections
     register Padrino::Helpers
     enable :sessions
 
+    before except: :login do 
+     redirect '/login' unless session[:logged_in]
+    end
+
     get '/' do
-      render 'home'
+        @parties = Party.all
+        render 'home'
+    end
+
+    get :login, map: '/login' do
+      # session[password] = params[:password]
+       render 'login'
+    end
+
+    post :login, map: '/login' do
+      if params[:password] == "wegotcoders"
+        session[:logged_in] = true
+        render '/home'
+      else
+        render '/home'
+      end
+    end
+
+    delete :logout do
+      session[:logged_in] = false
+      render '/login'
     end
 
     ##
